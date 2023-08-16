@@ -1,0 +1,13 @@
+{
+ "name": "docker_node_app",
+ "version": "1.0.0",
+ "description": "Node App on Docker",
+ "author": "Your Name <your.email@qub.ac.uk>",
+ "main": "server.js",
+ "scripts": {
+   "start": "node server.js"
+ },
+ "dependencies": {
+   "express": "^4.16.1"
+  }
+}
