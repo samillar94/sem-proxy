@@ -1,11 +1,19 @@
 'use strict';
 
 const express = require('express');
+const fs = require('fs');
 
 const PORT = 80;
 const HOST = '0.0.0.0';
 
+const frontendURIs = [
+  'http//localhost:8000',
+  'http://sem.40103709.qpc.hal.davecutting.uk/'
+]
+
 const params = [1,2,3,4,5];
+const inputs = require('./inputs.json');
+const services = require('./serviceregister.json');
 
 const app = express();
 
@@ -48,6 +56,25 @@ app.get('/', (req,res) => {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.send(r);
+});
+
+app.get('/status', (req,res)=>{
+
+  let data = {inputs, services};
+
+  res.setHeader('Content-Type', 'application/json');
+
+  /// Allowed frontend services
+  frontendURIs.forEach(uRI => {
+    res.setHeader('Access-Control-Allow-Origin', uRI);
+  });
+
+  res.send(data);
+
+});
+
+app.get('/register', (req,res)=>{
+  
 });
 
 app.listen(PORT, HOST);

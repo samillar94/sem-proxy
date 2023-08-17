@@ -1,0 +1,41 @@
+{
+    "components": [
+        {
+            "item": "Lecture sessions",
+            "default": null,
+            "available": 33,
+            "unit": "hours",
+            "scoreweight": 0.3 
+        },
+        {
+            "item": "Lab sessions",
+            "default": null,
+            "available": 22,
+            "unit": "hours",
+            "scoreweight": 0.4
+        },
+        {
+            "item": "Support sessions",
+            "default": null,
+            "available": 44,
+            "unit": "hours",
+            "scoreweight": 0.15
+        },
+        {
+            "item": "Canvas activities",
+            "default": null,
+            "available": 55,
+            "unit": "hours",
+            "scoreweight": 0.15
+        }
+
+    ],
+    "standards": [
+        {
+            "item": "Cutoff Engagement Score",
+            "default": 70,
+            "available": 100,
+            "unit": "%"
+        }        
+    ]
+}
