@@ -16,6 +16,8 @@ app.get('/', (req,res) => {
     "data": {}
   }
 
+  let service = req.query['service'];
+
   params.forEach(id => {
     let att = req.query['attendance_'+id];
     r.data[req.query['item_'+id]] = att;
