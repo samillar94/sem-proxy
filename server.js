@@ -8,7 +8,7 @@ const HOST = '0.0.0.0';
 
 const frontendURIs = [
   'http://localhost:8000', 
-  'http://sem.40103709.qpc.hal.davecutting.uk/'
+  'http://sem.40103709.qpc.hal.davecutting.uk'
 ]
 
 
