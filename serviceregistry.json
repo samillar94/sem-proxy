@@ -2,7 +2,13 @@
     {
         "name": "maxmin",
         "button": "Maximum and Minimum Attendance",
-        "localport": 8001
+        "localport": 8001,
+        "instances": [
+            {
+                "uri": "http://semmaxmin.40103709.qpc.hal.davecutting.uk",
+                "healthy": true
+            }
+        ]
     },
     {
         "name": "sort",
