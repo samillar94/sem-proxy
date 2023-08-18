@@ -7,13 +7,15 @@ const PORT = 80;
 const HOST = '0.0.0.0';
 
 const frontendURIs = [
-  'http//localhost:8000',
+  'http://localhost:8000', 
   'http://sem.40103709.qpc.hal.davecutting.uk/'
 ]
 
+
 const params = [1,2,3,4,5];
 const inputs = require('./inputs.json');
-const services = require('./serviceregister.json');
+const services = require('./serviceregistry.json');
+const { Console } = require('console');
 
 const app = express();
 
@@ -60,17 +62,21 @@ app.get('/', (req,res) => {
 
 app.get('/status', (req,res)=>{
 
-  let data = {inputs, services};
-
   res.setHeader('Content-Type', 'application/json');
 
-  /// Allowed frontend services
-  frontendURIs.forEach(uRI => {
-    res.setHeader('Access-Control-Allow-Origin', uRI);
-  });
+  const origin = req.headers.origin
 
-  res.send(data);
-
+  if (frontendURIs.includes(origin)) {
+    let data = {inputs, services};
+    data.error = false    
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.send(data);
+  } else {
+    r = {error: true, message: "Unauthorised origin."}
+    res.status(404);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.send(r)
+  }
 });
 
 app.get('/register', (req,res)=>{
@@ -78,4 +84,4 @@ app.get('/register', (req,res)=>{
 });
 
 app.listen(PORT, HOST);
-console.log('Running on http://${HOST}:${PORT}');
+console.log(`Running on http://${HOST}:${PORT}`);

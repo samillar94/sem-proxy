@@ -1,0 +1,32 @@
+[
+    {
+        "name": "maxmin",
+        "button": "Maximum and Minimum Attendance",
+        "localport": 8001
+    },
+    {
+        "name": "sort",
+        "button": "Sort High to Low",
+        "localport": 8002
+    },
+    {
+        "name": "total",
+        "button": "Total Attendance Hours",
+        "localport": 8003
+    },
+    {
+        "name": "score",
+        "button": "Student Engagement Score",
+        "localport": 8004
+    },
+    {
+        "name": "risk",
+        "button": "Risk of Student Failure",
+        "localport": 8005
+    },
+    {
+        "name": "percents",
+        "button": "Attendance Percentages",
+        "localport": 8006
+    }
+]
