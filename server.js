@@ -15,7 +15,7 @@ const frontendURIs = [
 const params = [1,2,3,4,5];
 const inputs = require('./inputs.json');
 const services = require('./serviceregistry.json');
-const { Console } = require('console');
+const proxies = require('./proxyregistry.json');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.get('/', (req,res) => {
   let r = {
     "error": false,
     "data": {}
-  }
+  };
 
   let service = req.query['service'];
 
@@ -53,7 +53,7 @@ app.get('/', (req,res) => {
   // xhttp.open("GET", querystring);
   // xhttp.send();
 
-  console.log(r)
+  console.log(r);
 
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -64,10 +64,10 @@ app.get('/status', (req,res)=>{
 
   res.setHeader('Content-Type', 'application/json');
 
-  const origin = req.headers.origin
+  const origin = req.headers.origin;
 
   if (frontendURIs.includes(origin)) {
-    let data = {inputs, services};
+    let data = {inputs, services, proxies}; /// TODO save proxies in frontend
     data.error = false    
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.send(data);
@@ -75,11 +75,49 @@ app.get('/status', (req,res)=>{
     r = {error: true, message: "Unauthorised origin."}
     res.status(404);
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send(r)
+    res.send(r);
   }
 });
 
-app.get('/register', (req,res)=>{
+app.post('/register', (req,res)=>{
+
+  res.setHeader('Content-Type', 'application/json');
+
+  const origin = req.headers.origin;
+  const {name, healthy} = req.body;
+
+  let found = false;
+  let known = false;
+
+  services.forEach(service => {
+    if (service.name == name) {
+      found = true
+      service.instances.forEach(instance => {
+        if (instance.uri == origin) {
+          known = true;
+          instance.healthy = healthy;
+        }
+      })
+      if (!known) {
+        service.instances.push({"uri": origin, "healthy": healthy})
+      }
+    }
+  });
+
+  if (found) {
+    res.send({"success": true, "proxyregistry": proxies});
+  } else {
+    res.send({"success": false});
+  }
+
+  console.log("Services:\n",services);
+  
+  fs.writeFile('serviceregistry.json', services, err => {
+    if (err) {
+      console.error(err)
+      return
+    }
+  })
   
 });
 
