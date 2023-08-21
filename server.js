@@ -15,7 +15,6 @@ const frontendURIs = [
 const params = [1,2,3,4,5];
 const inputs = require('./inputs.json');
 const services = require('./serviceregistry.json');
-const proxies = require('./proxyregistry.json');
 
 const app = express();
 
@@ -67,7 +66,7 @@ app.get('/status', (req,res)=>{
   const origin = req.headers.origin;
 
   if (frontendURIs.includes(origin)) {
-    let data = {inputs, services, proxies}; /// TODO save proxies in frontend
+    let data = {inputs, services}; /// TODO save proxies in frontend
     data.error = false    
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.send(data);
@@ -105,7 +104,7 @@ app.post('/register', (req,res)=>{
   });
 
   if (found) {
-    res.send({"success": true, "proxyregistry": proxies});
+    res.send({"success": true});
   } else {
     res.send({"success": false});
   }

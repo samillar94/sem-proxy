@@ -20,7 +20,12 @@
         "name": "total",
         "button": "Total Attendance Hours",
         "localport": 8003,
-        "instances": []
+        "instances": [
+            {
+                "uri": "http://semtotal.40103709.qpc.hal.davecutting.uk",
+                "healthy": true
+            }
+        ]
     },
     {
         "name": "score",
