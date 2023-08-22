@@ -2,6 +2,7 @@
     "components": [
         {
             "item": "Lecture sessions",
+            "id": 1,
             "default": null,
             "available": 33,
             "unit": "hours",
@@ -9,6 +10,7 @@
         },
         {
             "item": "Lab sessions",
+            "id": 2,
             "default": null,
             "available": 22,
             "unit": "hours",
@@ -16,6 +18,7 @@
         },
         {
             "item": "Support sessions",
+            "id": 3,
             "default": null,
             "available": 44,
             "unit": "hours",
@@ -23,6 +26,7 @@
         },
         {
             "item": "Canvas activities",
+            "id": 4,
             "default": null,
             "available": 55,
             "unit": "hours",

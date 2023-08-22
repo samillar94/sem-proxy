@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:18
 WORKDIR /usr/src/app
 
 COPY package.json ./
@@ -8,5 +8,5 @@ COPY . .
 
 EXPOSE 80
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "proxy.js" ]
 

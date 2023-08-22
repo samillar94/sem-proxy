@@ -3,14 +3,15 @@
         "name": "maxmin",
         "button": "Maximum and Minimum Attendance",
         "localport": 8001,
+        "bridgeIP": "172.17.0.3",
         "needs": {
             "items": false,
             "attendances": false,
-            "sort": true,
             "availabilities": false,
+            "units": true,
             "weights": false,
             "cutoff": false,
-            "score": false
+            "services": ["sort"]
         },
         "instances": [
             {
@@ -23,14 +24,14 @@
         "name": "sort",
         "button": "Sort High to Low",
         "localport": 8002,
+        "bridgeIP": "172.17.0.6",
         "needs": {
             "items": true,
             "attendances": true,
-            "sort": false,
             "availabilities": false,
+            "units": true,
             "weights": false,
-            "cutoff": false,
-            "score": false
+            "cutoff": false
         },
         "instances": []
     },
@@ -38,14 +39,14 @@
         "name": "total",
         "button": "Total Attendance Hours",
         "localport": 8003,
+        "bridgeIP": "172.17.0.7",
         "needs": {
             "items": false,
             "attendances": true,
-            "sort": false,
             "availabilities": true,
+            "units": true,
             "weights": false,
-            "cutoff": false,
-            "score": false
+            "cutoff": false
         },
         "instances": [
             {
@@ -58,14 +59,14 @@
         "name": "score",
         "button": "Student Engagement Score",
         "localport": 8004,
+        "bridgeIP": "172.17.0.5",
         "needs": {
             "items": false,
             "attendances": true,
-            "sort": false,
             "availabilities": true,
+            "units": false,
             "weights": true,
-            "cutoff": false,
-            "score": false
+            "cutoff": false
         },
         "instances": []
     },
@@ -73,14 +74,15 @@
         "name": "risk",
         "button": "Risk of Student Failure",
         "localport": 8005,
+        "bridgeIP": "172.17.0._",
         "needs": {
             "items": false,
             "attendances": false,
-            "sort": false,
             "availabilities": false,
+            "units": false,
             "weights": false,
             "cutoff": true,
-            "score": true
+            "services": ["score"]
         },
         "instances": []
     },
@@ -88,14 +90,14 @@
         "name": "percents",
         "button": "Attendance Percentages",
         "localport": 8006,
+        "bridgeIP": "172.17.0._",
         "needs": {
             "items": true,
             "attendances": true,
-            "sort": false,
             "availabilities": true,
+            "units": false,
             "weights": false,
-            "cutoff": false,
-            "score": false
+            "cutoff": false
         },
         "instances": []
     }
