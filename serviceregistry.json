@@ -24,7 +24,7 @@
         "name": "sort",
         "button": "Sort High to Low",
         "localport": 8002,
-        "bridgeIP": "172.17.0.6",
+        "bridgeIP": "172.17.0.7",
         "needs": {
             "items": true,
             "attendances": true,
@@ -39,7 +39,7 @@
         "name": "total",
         "button": "Total Attendance Hours",
         "localport": 8003,
-        "bridgeIP": "172.17.0.7",
+        "bridgeIP": "172.17.0.8",
         "needs": {
             "items": false,
             "attendances": true,
@@ -59,7 +59,7 @@
         "name": "score",
         "button": "Student Engagement Score",
         "localport": 8004,
-        "bridgeIP": "172.17.0.5",
+        "bridgeIP": "172.17.0.6",
         "needs": {
             "items": false,
             "attendances": true,
@@ -90,7 +90,7 @@
         "name": "percents",
         "button": "Attendance Percentages",
         "localport": 8006,
-        "bridgeIP": "172.17.0._",
+        "bridgeIP": "172.17.0.4",
         "needs": {
             "items": true,
             "attendances": true,

@@ -206,7 +206,7 @@ async function buildEndpoint(req) {
 
   if (service.needs.availabilities) {
     inputs.components.forEach(component => {
-      ep += `available_${component.id}=${component.available}&`
+      ep += `availability_${component.id}=${component.availability}&`
     });
   }
 
@@ -243,35 +243,14 @@ async function callEndpoint(options) {
   await axios.get(options.hostname+options.path)
   .then(results => {
     console.log("Service responded")
-    if (results.error) {
-      resToFront.message = results.error;
+    if (results.data.error) {
+      resToFront.message = results.data.message;
     } else {
-      resToFront.error = false;
-      resToFront.data = results.data;
+      resToFront = results.data;
     }
   })
   .catch(error => {
     resToFront.message = error;
   })
-
-
-  // /// alternative?
-  // const req = http.request(options, (res) => {
-  //   let data = '';
-  
-  //   res.on('data', (chunk) => {
-  //     data += chunk;
-  //   });
-  
-  //   res.on('end', () => {
-  //     console.log(data);
-  //   });
-  // });
-  
-  // req.on('error', (error) => {
-  //   console.error('An error occurred:', error);
-  // });
-  
-  // req.end();
 
 return resToFront }
