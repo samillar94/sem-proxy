@@ -2,10 +2,10 @@
  "name": "docker_node_app",
  "version": "1.0.0",
  "description": "Node App on Docker",
- "author": "Your Name <your.email@qub.ac.uk>",
- "main": "server.js",
+ "author": "Sam Millar <smillar36@qub.ac.uk>",
+ "main": "proxy.js",
  "scripts": {
-   "start": "node server.js"
+   "start": "node proxy.js"
  },
  "dependencies": {
    "express": "^4.16.1",

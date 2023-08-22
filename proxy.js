@@ -149,6 +149,11 @@ function getRandomIndex(arrayLength) {
   }
 return index }
 
+/**
+ * Parses a service request, producing an options object compatible with nodejs http module
+ * @param {*} req 
+ * @returns options = { hostname, path, method }
+ */
 async function buildEndpoint(req) {
 
   /// Get requested service details from registry
