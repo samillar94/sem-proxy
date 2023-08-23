@@ -228,6 +228,7 @@ async function buildEndpoint(req) {
   }
 
   let options = {
+    servicename: service.name,
     hostname: serviceURI,
     path: ep,
     method: 'GET'
