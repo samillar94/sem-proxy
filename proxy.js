@@ -170,6 +170,7 @@ async function buildEndpoint(req) {
 
   let ep = '/?';
 
+  /// Handle dependencies
   if (service.needs.services && req.stack <= stackLimit) {
 
     let needReq = { ...req }; /// spread clone
@@ -218,7 +219,7 @@ async function buildEndpoint(req) {
 
   if (service.needs.weights) {
     inputs.components.forEach(component => {
-      ep += `weight_${component.id}=${component.scoreweight}&`
+      ep += `weight_${component.id}=${component.weight}&`
     });
   }
 

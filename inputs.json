@@ -6,7 +6,7 @@
             "default": null,
             "availability": 33,
             "unit": "hours",
-            "scoreweight": 0.3 
+            "weight": 0.3 
         },
         {
             "item": "Lab sessions",
@@ -14,7 +14,7 @@
             "default": null,
             "availability": 22,
             "unit": "hours",
-            "scoreweight": 0.4
+            "weight": 0.4
         },
         {
             "item": "Support sessions",
@@ -22,7 +22,7 @@
             "default": null,
             "availability": 44,
             "unit": "hours",
-            "scoreweight": 0.15
+            "weight": 0.15
         },
         {
             "item": "Canvas activities",
@@ -30,7 +30,7 @@
             "default": null,
             "availability": 55,
             "unit": "hours",
-            "scoreweight": 0.15
+            "weight": 0.15
         }
 
     ],
