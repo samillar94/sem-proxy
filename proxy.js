@@ -160,7 +160,7 @@ async function buildEndpoint(req) {
   let service = services.filter(serviceReg => serviceReg.name === req.query.service)[0];
 
   let serviceURI = `http://${service.bridgeIP}:80`;
-  /// 172.17.0.6 for sort
+  /// 172.17.0.7 for sort
 
   if (isRunningOnCloud(req.hostname)) {
     let index = getRandomIndex(service.instances.length);
