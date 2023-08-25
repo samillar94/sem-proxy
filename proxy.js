@@ -162,14 +162,24 @@ async function buildEndpoint(req) {
   let service = services.filter(serviceReg => serviceReg.name === req.query.service)[0];
 
   let serviceURI = `http://${service.bridgeIP}:80`;
-  /// 172.17.0.7 for sort
+  /// e.g. 172.17.0.7 for sort
 
+  /// Find healthy service to use or throw error
   if (isRunningOnCloud(req.hostname)) {
-    let index = getRandomIndex(service.instances.length);
-    serviceURI = service.instances[index]['uri'];
-    /// TODO handle failures
+    if (service.instances) {
+      let healthyInstances = services.instances.filter(instance => {instance.healthy})
+      if (healthyInstances > 0) {
+        let index = Math.floor(Math.random() * arrayLength)
+        serviceURI = service.instances[index]['uri'];
+      } else {
+        throw new Error("No healthy instances available")
+      }
+    } else {
+      throw new Error("No instances available")
+    }
   }
 
+  /// Start building endpoint query
   let ep = '/?';
 
   /// Handle dependencies
@@ -229,6 +239,7 @@ async function buildEndpoint(req) {
     ep += `cutoff=${req.query['c']}&`
   }
 
+  /// Set options (compatible with HTTP module)
   let options = {
     servicename: service.name,
     hostname: serviceURI,

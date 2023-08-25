@@ -33,7 +33,13 @@
             "weights": false,
             "cutoff": false
         },
-        "instances": []
+        "instances": [
+            {
+                "uri": "http://semsort.40103709.qpc.hal.davecutting.uk",
+                "healthy": true
+            }
+
+        ]
     },
     {
         "name": "total",
@@ -68,7 +74,13 @@
             "weights": true,
             "cutoff": false
         },
-        "instances": []
+        "instances": [
+            {
+                "uri": "http://semscore.40103709.qpc.hal.davecutting.uk",
+                "healthy": true
+            }
+
+        ]
     },
     {
         "name": "risk",
@@ -99,6 +111,12 @@
             "weights": false,
             "cutoff": false
         },
-        "instances": []
+        "instances": [
+            {
+                "uri": "http://sempercents.40103709.qpc.hal.davecutting.uk",
+                "healthy": true
+            }
+
+        ]
     }
 ]
