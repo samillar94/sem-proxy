@@ -166,14 +166,14 @@ async function buildEndpoint(req) {
 
   /// Find healthy service to use or throw error
   if (isRunningOnCloud(req.hostname)) {
-    if (service[instances]) {
+    if (service['instances']) {
       console.log(service)
       /// TODO 
       let healthyInstances = service[instances].filter(instance => {instance.healthy})
       console.log(healthyInstances)
       if (healthyInstances.length > 0) {
         let index = Math.floor(Math.random() * healthyInstances.length)
-        serviceURI = service.instances[index]['uri'];
+        serviceURI = healthyInstances[index]['uri'];
       } else {
         throw new Error("No healthy instances available")
       }
