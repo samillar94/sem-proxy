@@ -145,7 +145,7 @@ function isRunningOnCloud(hostname) {
 return result }
 
 function getRandomIndex(arrayLength) {
-  index = -1
+  let index = -1
   if (arrayLength > 0 && parseInt(arrayLength)!=NaN) {
     index = Math.floor(Math.random() * arrayLength)
   }
