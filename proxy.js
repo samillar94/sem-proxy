@@ -38,12 +38,12 @@ app.get('/', (req,res) => {
       res.send(resToFront);
     })
     .catch(error => {
+      console.error(error);
       res.status(500).send({"Service error": error});
     })
   })
   .catch(error => {
-    console.log("stout test")
-    console.err("sterr test")
+    console.error(error);
     res.status(500).send({"Proxy error": error});
   })
 
