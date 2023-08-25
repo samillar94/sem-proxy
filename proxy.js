@@ -42,6 +42,8 @@ app.get('/', (req,res) => {
     })
   })
   .catch(error => {
+    console.log("stout test")
+    console.err("sterr test")
     res.status(500).send({"Proxy error": error});
   })
 
