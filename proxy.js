@@ -170,7 +170,7 @@ async function buildEndpoint(req) {
     if (service.instances) {
       console.log(service)
       /// TODO 
-      let healthyInstances = service.instances.filter(instance => {instance.healthy})
+      let healthyInstances = service.instances.filter(instance => instance.healthy)
       console.log(healthyInstances)
       if (healthyInstances.length > 0) {
         let index = Math.floor(Math.random() * healthyInstances.length)
