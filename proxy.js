@@ -160,7 +160,7 @@ async function buildEndpoint(req) {
 
   /// Get requested service details from registry
   let service = services.filter(serviceReg => serviceReg.name === req.query.service)[0];
-
+  console.log(service)
   let serviceURI = `http://${service.bridgeIP}:80`;
   /// e.g. 172.17.0.7 for sort
 
