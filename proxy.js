@@ -189,7 +189,7 @@ async function buildEndpoint(req) {
   /// Handle dependencies
   if (service.needs.services && req.stack <= stackLimit) {
 
-    let needReq = { ...req }; /// spread clone
+    let needReq = { ...req }; /// spread-clone
     needReq.query.service = service.needs.services[needReq.stack-1];
     needReq.stack++; /// recursion breaker
 
