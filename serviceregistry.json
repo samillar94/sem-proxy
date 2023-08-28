@@ -16,7 +16,7 @@
         "instances": [
             {
                 "uri": "http://semmaxmin.40103709.qpc.hal.davecutting.uk",
-                "healthy": true
+                "healthy": false
             }
         ]
     },
@@ -36,7 +36,7 @@
         "instances": [
             {
                 "uri": "http://semsort.40103709.qpc.hal.davecutting.uk",
-                "healthy": true
+                "healthy": false
             }
 
         ]
@@ -99,7 +99,7 @@
         "instances": [
             {
                 "uri": "https://europe-west2-fair-jigsaw-392019.cloudfunctions.net/sem-risk",
-                "healthy": false
+                "healthy": true
             }
         ]
     },
