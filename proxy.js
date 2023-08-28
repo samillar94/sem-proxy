@@ -184,27 +184,27 @@ async function buildEndpoint(req) {
   }
 
   /// Start building endpoint query
-  let ep = '/?';
+  let ep = '?';
 
   /// Handle dependencies
   if (service.needs.services && req.stack <= stackLimit) {
 
     let needReq = { ...req }; /// spread-clone
     needReq.query.service = service.needs.services[needReq.stack-1];
-    needReq.stack++; /// recursion breaker
+    needReq.stack++; /// recursion tracker
 
     let needRes = await callEndpoint(await buildEndpoint(needReq));
     
     if (service.needs.services.includes('sort')) {
-      for (let id = 1; id <= needRes.sorted_attendance.length; id++) {
+      for (let id = 1; id <= needRes.data.sorted_attendance.length; id++) {
         let index = id - 1;
-        let { item, attendance } = needRes.sorted_attendance[index];
+        let { item, attendance } = needRes.data.sorted_attendance[index];
         ep += `sorted_item_${id}=${item}&sorted_attendance_${id}=${attendance}&`
       }
     }
 
     if (service.needs.services.includes('score')) {
-        ep += `score=${needRes.score}&`
+        ep += `score=${needRes.data.score}&`
     }
 
   } 
