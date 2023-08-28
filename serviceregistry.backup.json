@@ -96,7 +96,12 @@
             "cutoff": true,
             "services": ["score"]
         },
-        "instances": []
+        "instances": [
+            {
+                "uri": "https://europe-west2-fair-jigsaw-392019.cloudfunctions.net/sem-risk",
+                "healthy": false
+            }
+        ]
     },
     {
         "name": "percents",
