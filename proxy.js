@@ -194,6 +194,8 @@ async function buildEndpoint(req) {
     needReq.stack++; /// recursion tracker
 
     let needRes = await callEndpoint(await buildEndpoint(needReq));
+
+    console.log(needRes)
     
     if (service.needs.services.includes('sort')) {
       for (let id = 1; id <= needRes.data.sorted_attendance.length; id++) {
