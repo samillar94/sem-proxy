@@ -14,7 +14,7 @@ const frontendURIs = [
   'http://sem.40103709.qpc.hal.davecutting.uk'
 ]
 
-const stackLimit = 2; /// recursion breaker
+const stackLimit = 3; /// recursion breaker
 
 const inputs = require('./inputs.json');
 let services = require('./serviceregistry.json');
@@ -143,13 +143,6 @@ function isRunningOnCloud(hostname) {
   }
 
 return result }
-
-function getRandomIndex(arrayLength) {
-  let index = -1
-  if (arrayLength > 0 && parseInt(arrayLength)!=NaN) {
-    index = Math.floor(Math.random() * arrayLength)
-  }
-return index }
 
 /**
  * Parses a service request, producing an options object compatible with nodejs http module

@@ -16,7 +16,7 @@
         "instances": [
             {
                 "uri": "http://semmaxmin.40103709.qpc.hal.davecutting.uk",
-                "healthy": false
+                "healthy": true
             }
         ]
     },
