@@ -36,7 +36,7 @@
         "instances": [
             {
                 "uri": "http://semsort.40103709.qpc.hal.davecutting.uk",
-                "healthy": false
+                "healthy": true
             }
 
         ]
