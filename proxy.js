@@ -191,9 +191,9 @@ async function buildEndpoint(req) {
     console.log(needRes)
     
     if (service.needs.services.includes('sort')) {
-      for (let id = 1; id <= needRes.data.sorted_attendance.length; id++) {
+      for (let id = 1; id <= needRes.data.sorted_attendances.length; id++) {
         let index = id - 1;
-        let { item, attendance, unit } = needRes.data.sorted_attendance[index];
+        let { item, attendance, unit } = needRes.data.sorted_attendances[index];
         ep += `sorted_item_${id}=${item}&sorted_attendance_${id}=${attendance}&sorted_unit_${id}=${unit}&`
       }
     }
