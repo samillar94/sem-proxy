@@ -73,7 +73,7 @@ app.post('/register', (req,res)=>{
   res.setHeader('Content-Type', 'application/json');
 
   const origin = req.headers.origin;
-  const {name, healthy} = req.body;
+  const {name, open} = req.body;
 
   let found = false;
   let known = false;
@@ -84,11 +84,11 @@ app.post('/register', (req,res)=>{
       service.instances.forEach(instance => {
         if (instance.uri == origin) {
           known = true;
-          instance.healthy = healthy;
+          instance.open = open;
         }
       })
       if (!known) {
-        service.instances.push({"uri": origin, "healthy": healthy})
+        service.instances.push({"uri": origin, "open": open})
       }
     }
   });
@@ -158,18 +158,18 @@ async function buildEndpoint(req) {
   let serviceURI = `http://${service.bridgeIP}:80`;
   /// e.g. 172.17.0.7 for sort
 
-  /// Find healthy service to use or throw error
+  /// Find open service to use or throw error
   if (isRunningOnCloud(req.hostname)) {
     if (service.instances) {
       console.log(service)
       /// TODO 
-      let healthyInstances = service.instances.filter(instance => instance.healthy)
-      console.log(healthyInstances)
-      if (healthyInstances.length > 0) {
-        let index = Math.floor(Math.random() * healthyInstances.length)
-        serviceURI = healthyInstances[index]['uri'];
+      let openInstances = service.instances.filter(instance => instance.open)
+      console.log(openInstances)
+      if (openInstances.length > 0) {
+        let index = Math.floor(Math.random() * openInstances.length)
+        serviceURI = openInstances[index]['uri'];
       } else {
-        throw new Error("No healthy instances available")
+        throw new Error("No open instances available")
       }
     } else {
       throw new Error("No instances available")
