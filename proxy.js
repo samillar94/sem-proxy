@@ -39,12 +39,12 @@ app.get('/', (req,res) => {
     })
     .catch(error => {
       console.error(error);
-      res.status(500).send({"Service error": error});
+      res.status(500).send({"error": true, "message": error.toString()});
     })
   })
   .catch(error => {
     console.error(error);
-    res.status(500).send({"Proxy error": error});
+    res.status(500).send({"error": true, "message": error.toString()});
   })
 
 });
