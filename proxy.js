@@ -86,9 +86,11 @@ app.post('/register', (req,res)=>{
           known = true;
           instance.open = open;
         }
+        console.log(name, origin, "service location refreshed")
       })
       if (!known) {
         service.instances.push({"uri": origin, "open": open})
+        console.log(name, origin, "service location added")
       }
     }
   });

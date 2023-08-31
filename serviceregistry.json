@@ -86,7 +86,7 @@
         "name": "risk",
         "button": "Risk of Student Failure",
         "localport": 8005,
-        "bridgeIP": "172.17.0._",
+        "bridgeIP": "https://europe-west2-fair-jigsaw-392019.cloudfunctions.net/sem-risk",
         "needs": {
             "items": false,
             "attendances": false,
