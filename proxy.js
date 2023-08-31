@@ -31,10 +31,12 @@ app.get('/', (req,res) => {
 
   buildEndpoint(req)
   .then(options => {
-    console.log("\nRequest:\n"+options);
+    console.log("\nRequest:");    
+    console.log(options);
     callEndpoint(options)
     .then(resToFront => {
-      console.log("\nResponse:\n"+resToFront);
+      console.log("\nResponse:");      
+      console.log(resToFront);
       res.send(resToFront);
     })
     .catch(error => {
