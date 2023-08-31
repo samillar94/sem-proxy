@@ -31,10 +31,10 @@ app.get('/', (req,res) => {
 
   buildEndpoint(req)
   .then(options => {
-    console.log(options);
+    console.log("\nRequest:\n"+options);
     callEndpoint(options)
     .then(resToFront => {
-      console.log(resToFront);
+      console.log("\nResponse:\n"+resToFront);
       res.send(resToFront);
     })
     .catch(error => {
@@ -100,8 +100,6 @@ app.post('/register', (req,res)=>{
   } else {
     res.send({"success": false});
   }
-
-  console.log("Services:\n",services);
   
   fs.writeFile('serviceregistry.json', services, err => {
     if (err) {
@@ -153,20 +151,15 @@ return result }
  */
 async function buildEndpoint(req) {
 
-  console.log(req.query.service)
   /// Get requested service details from registry
   let service = services.filter(serviceReg => serviceReg.name == req.query.service)[0];
-  console.log(service)
   let serviceURI = `http://${service.bridgeIP}:80`;
   /// e.g. 172.17.0.7 for sort
 
   /// Find open service to use or throw error
   if (isRunningOnCloud(req.hostname)) {
     if (service.instances) {
-      console.log(service)
-      /// TODO 
       let openInstances = service.instances.filter(instance => instance.open)
-      console.log(openInstances)
       if (openInstances.length > 0) {
         let index = Math.floor(Math.random() * openInstances.length)
         serviceURI = openInstances[index]['uri'];
@@ -190,7 +183,7 @@ async function buildEndpoint(req) {
 
     let needRes = await callEndpoint(await buildEndpoint(needReq));
 
-    console.log(needRes)
+    console.log("Fetched prerequisite service response")
     
     if (service.needs.services.includes('sort')) {
       for (let id = 1; id <= needRes.data.sorted_attendances.length; id++) {
@@ -258,7 +251,6 @@ async function callEndpoint(options) {
 
   await axios.get(options.hostname+options.path)
   .then(results => {
-    console.log("Service responded")
     if (results.data.error) {
       resToFront.message = results.data.message;
     } else {
