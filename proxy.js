@@ -144,7 +144,8 @@ function isRunningOnCloud(hostname) {
     }
   }
 
-return result }
+  return result;
+}
 
 /**
  * Parses a service request, producing an options object compatible with nodejs http module
@@ -243,7 +244,8 @@ async function buildEndpoint(req) {
     method: 'GET'
   }
 
-return options }
+  return options;
+}
 
 async function callEndpoint(options) {
 
@@ -263,4 +265,5 @@ async function callEndpoint(options) {
     resToFront.message = error;
   })
 
-return resToFront }
+  return resToFront;
+}
